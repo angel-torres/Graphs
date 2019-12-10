@@ -23,6 +23,7 @@ class Graph:
             self.vertices[v1].add(v2)
         else:
             raise IndexError("That vertex does not exist")
+
     def get_neighbors(self, vertex_id):
         """
         Get all neighbors (edges) of a vertex.
@@ -34,14 +35,47 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Create an empty queu and enque the starting vertex ID
+        q = Queue()
+        q.enqueue(starting_vertex)
+        # Create an empty set to store visited vertices
+        visited = set()
+        # While the queue is not empty...
+        while q.size() > 0:
+            # Deque the first vertex
+            vert = q.dequeue()
+            # If that vertex has not been visited...
+            if vert not in visited:
+                # Mark it as visited
+                print(vert)
+                visited.add(vert)
+                # Add all of its neighbors to the back of the queue          
+                for neighbor in self.vertices[vert]:
+                    q.enqueue(neighbor)
 
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Create an empty stack and enque the starting vertex ID
+        s = Stack()
+        s.push(starting_vertex)
+        # Create an empty set to store visited vertices
+        visited = set()
+        # While the queue is not empty...
+        while s.size() > 0:
+            # pop the first vertex
+            vert = s.pop()
+            # If that vertex has not been visited...
+            if vert not in visited:
+                # Mark it as visited
+                print(vert)
+                visited.add(vert)
+                # Add all of its neighbors to the back of the stack          
+                for neighbor in self.vertices[vert]:
+                    s.push(neighbor)
+        
 
     def dft_recursive(self, starting_vertex):
         """
