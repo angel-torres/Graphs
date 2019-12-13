@@ -30,10 +30,6 @@ traversal_map = {}
 visited_rooms_count = 0
 
 while visited_rooms_count < 100000:
-    traversal_map[player.currentRoom.id] = {}
-    for direction in player.currentRoom.getExits():
-        traversal_map[player.currentRoom.id][direction] = None
-
     # choose next random room from possible directions
     possible_rooms = player.currentRoom.getExits()
     value = randint(0, len(possible_rooms) - 1)
@@ -41,9 +37,16 @@ while visited_rooms_count < 100000:
 
     player.travel(possible_rooms[value])
     traversalPath.append(possible_rooms[value])
+
+    if player.currentRoom.id not in traversal_map:
+        traversal_map[player.currentRoom.id] = {}
+
+    traversal_map[player.currentRoom.id][possible_rooms[value]] = player.currentRoom.id
+    
     
     visited_rooms_count += 1
-    
+
+print(traversal_map)
 # While the queue is not empty...
 
 
