@@ -1,6 +1,7 @@
 from room import Room
 from player import Player
 from world import World
+from random import randint
 
 import random
 
@@ -24,24 +25,29 @@ player = Player("Name", world.startingRoom)
 # Fill this out
 traversalPath = []
 
-class Queue():
-    def __init__(self):
-        self.queue = []
-    def enqueue(self, value):
-        self.queue.append(value)
-    def dequeue(self):
-        if self.size() > 0:
-            return self.queue.pop(0)
-        else:
-            return None
-    def size(self):
-        return len(self.queue
-
-q = Queue()
-q.enqueue(player.currentRoom)
 # Create an empty set to store visited vertices
+traversal_map = {}
+visited_rooms_count = 0
 
+while visited_rooms_count < 100000:
+    traversal_map[player.currentRoom.id] = {}
+    for direction in player.currentRoom.getExits():
+        traversal_map[player.currentRoom.id][direction] = None
 
+    # choose next random room from possible directions
+    possible_rooms = player.currentRoom.getExits()
+    value = randint(0, len(possible_rooms) - 1)
+
+    print(traversal_map[player.currentRoom.id][possible_rooms[value]])
+
+    if traversal_map[player.currentRoom.id][possible_rooms[value]] == None:
+        player.travel(possible_rooms[value])
+        traversal_map[player.currentRoom.id][possible_rooms[value]] = player.currentRoom.id
+        traversalPath.append(possible_rooms[value])
+    
+    visited_rooms_count += 1
+    
+print(traversal_map)
 # While the queue is not empty...
 
 
