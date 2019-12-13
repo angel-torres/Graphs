@@ -40,8 +40,10 @@ class Queue():
 q = Queue()
 q.enqueue(player.currentRoom)
 # Create an empty set to store visited vertices
-visited = set()
+
+
 # While the queue is not empty...
+
 
 # TRAVERSAL TEST
 visited_rooms = set()
