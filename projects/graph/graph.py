@@ -47,7 +47,7 @@ class Graph:
             # If that vertex has not been visited...
             if vert not in visited:
                 # Mark it as visited
-                print(vert)
+                print(f'{vert}')
                 visited.add(vert)
                 # Add all of its neighbors to the back of the queue          
                 for neighbor in self.vertices[vert]:
@@ -78,7 +78,7 @@ class Graph:
             # If that vertex has not been visited...
             if vert not in visited:
                 # Mark it as visited
-                print(vert)
+                print(f'dft - {vert}')
                 visited.add(vert)
                 # Add all of its neighbors to the back of the stack          
                 for neighbor in self.vertices[vert]:
