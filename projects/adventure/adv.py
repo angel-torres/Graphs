@@ -38,16 +38,12 @@ while visited_rooms_count < 100000:
     possible_rooms = player.currentRoom.getExits()
     value = randint(0, len(possible_rooms) - 1)
 
-    print(traversal_map[player.currentRoom.id][possible_rooms[value]])
 
-    if traversal_map[player.currentRoom.id][possible_rooms[value]] == None:
-        player.travel(possible_rooms[value])
-        traversal_map[player.currentRoom.id][possible_rooms[value]] = player.currentRoom.id
-        traversalPath.append(possible_rooms[value])
+    player.travel(possible_rooms[value])
+    traversalPath.append(possible_rooms[value])
     
     visited_rooms_count += 1
     
-print(traversal_map)
 # While the queue is not empty...
 
 
