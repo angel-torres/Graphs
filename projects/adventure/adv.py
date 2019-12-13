@@ -24,6 +24,25 @@ player = Player("Name", world.startingRoom)
 # Fill this out
 traversalPath = []
 
+class Queue():
+    def __init__(self):
+        self.queue = []
+    def enqueue(self, value):
+        self.queue.append(value)
+    def dequeue(self):
+        if self.size() > 0:
+            return self.queue.pop(0)
+        else:
+            return None
+    def size(self):
+        return len(self.queue
+
+q = Queue()
+q.enqueue(player.currentRoom)
+# Create an empty set to store visited vertices
+
+
+# While the queue is not empty...
 
 
 # TRAVERSAL TEST
