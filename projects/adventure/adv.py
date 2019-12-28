@@ -26,27 +26,28 @@ player = Player("Name", world.startingRoom)
 traversalPath = []
 
 # Create an empty set to store visited vertices
-traversal_map = {}
+traversal_graph = {}
 visited_rooms_count = 0
 
 while visited_rooms_count < 100000:
     # choose next random room from possible directions
+    previous_room = player.currentRoom.id
     possible_rooms = player.currentRoom.getExits()
     value = randint(0, len(possible_rooms) - 1)
 
-
+    
     player.travel(possible_rooms[value])
     traversalPath.append(possible_rooms[value])
 
-    if player.currentRoom.id not in traversal_map:
-        traversal_map[player.currentRoom.id] = {}
+    if player.currentRoom.id not in traversal_graph:
+        traversal_graph[player.currentRoom.id] = {}
 
-    traversal_map[player.currentRoom.id][possible_rooms[value]] = player.currentRoom.id
+    traversal_graph[previous_room][possible_rooms[value]] = player.currentRoom.id
     
     
     visited_rooms_count += 1
 
-print(traversal_map)
+print(traversal_graph)
 # While the queue is not empty...
 
 
