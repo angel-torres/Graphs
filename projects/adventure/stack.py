@@ -18,21 +18,22 @@ class LinkedList:
 		if self.size == 0:
 			raise ValueError('There are no more nodes!')
 		new_head = self.head.next
+		old_head = self.head
 		self.head = new_head
 		self.size -= 1
+		return old_head 
 
 class Stack:
-	def __init__(self, size):
-		self.stack = [0] * size
+	def __init__(self):
+		self.stack = LinkedList()
+		self.size = 0
 
 	def push(self, value):
-		for i in range(1, len(self.stack), 1):
-			self.stack[i - 1] = self.stack[i]
-		self.stack[len(self.stack) - 1] = value
+		self.stack.addToHead(value)
+		self.size += 1
 
 	def pop(self):
-		popped = self.stack[len(self.stack) - 1]
-		for i in range(len(self.stack) - 2, -1, -1):
-			self.stack[i + 1] = self.stack[i]
-		return popped
+		self.size -= 1
+		return self.stack.removeFromHead()
+
 
