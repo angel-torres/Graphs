@@ -16,7 +16,7 @@ class LinkedList:
 
 	def removeFromHead(self):
 		if self.size == 0:
-			raise ValueError('There are no more nodes!')
+			return None
 		new_head = self.head.next
 		old_head = self.head
 		self.head = new_head
@@ -35,5 +35,9 @@ class Stack:
 	def pop(self):
 		self.size -= 1
 		return self.stack.removeFromHead()
+
+	def peek(self):
+		return self.stack.head.value
+
 
 

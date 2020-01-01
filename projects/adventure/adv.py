@@ -31,17 +31,28 @@ traversalPath = []
 
 
 # ----------------------------------------------------------------- START
+adventure_stack = Stack()
+traversal_graph = {}
+adventure_stack.push(player.currentRoom.id)
 
-print(player.currentRoom.id, "ROOM ID")
-print(player.currentRoom.getExits(), "ROOM EXITS")
+traversal_graph[player.currentRoom.id] = {}
 
-print("<--- MOVING TO NEW ROOM")
+for direction in player.currentRoom.getExits():
+	traversal_graph[player.currentRoom.id][direction] = None
 
-player.travel('n')
+	
+print(traversal_graph)	
+	
 
-print(player.currentRoom.id, "NEW ROOM ID")
-print(player.currentRoom.getExits(), "ROOM EXITS")
-# print(player.currentRoom.n_to ,"ROOM DETAILS")
+
+
+# print(player.currentRoom.id, "ROOM ID")
+# print(player.currentRoom.getExits(), "ROOM EXITS")
+# 
+# print("<--- MOVING TO NEW ROOM")
+# 
+# player.travel('n')
+# 
 
 
 # ----------------------------------------------------------------- END
