@@ -37,6 +37,9 @@ class Stack:
 		return self.stack.removeFromHead()
 
 	def peek(self):
+		if self.stack.head == None:
+			return None
+
 		return self.stack.head.value
 
 
