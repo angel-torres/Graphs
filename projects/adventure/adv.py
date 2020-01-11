@@ -20,7 +20,7 @@ roomGraph={0: [(3, 5), {'n': 1, 's': 5, 'e': 3, 'w': 7}], 1: [(3, 6), {'s': 0, '
 world.loadGraph(roomGraph)
 
 # UNCOMMENT TO VIEW MAP
-world.printRooms()
+# world.printRooms()
 
 player = Player("Name", world.startingRoom)
 
@@ -33,18 +33,22 @@ traversalPath = []
 
 adventure_stack = Stack()
 traversal_graph = {}
+visited = set()
+visited.add(4)
 adventure_stack.push(player.currentRoom.id)
 
 traversal_graph[player.currentRoom.id] = {}
 exits_arr = player.currentRoom.getExits()
+print("visited", visited)
 
 while adventure_stack.size > 0:
-	print(adventure_stack.size)
-	adventure_stack.pop()
+    currRm = adventure_stack.peek()
+    adventure_stack.pop()
 
-print(traversal_graph)
+#print("graph", traversal_graph)
+#print("stack", adventure_stack.peek())
+#print("current room", player.currentRoom)
 	
-
 
 
 # print(player.currentRoom.id, "ROOM ID")
